@@ -1,0 +1,8 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Datasource local storage ignored files
+/../../../../../../../:\Workspace\UpGrad\Machine Learning - 3 (NLP)\Case Study - Chat bot Restaurant Recommendations\Restaurant-Recommendation-Chatbot\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
