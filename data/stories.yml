@@ -1,0 +1,58 @@
+version: "2.0"
+stories:
+  - story: stop form + continue
+    steps:
+      - intent: restaurant_search
+      - action: restaurant_form
+      - active_loop: restaurant_form
+      - intent: stop
+      - action: utter_ask_continue
+      - intent: affirm
+      - action: restaurant_form
+      - active_loop: null
+      - action: utter_submit
+      - action: utter_slots_values
+      - action: action_search_restaurants
+
+  - story: stop form + stop
+    steps:
+      - intent: restaurant_search
+      - action: restaurant_form
+      - active_loop: restaurant_form
+      - intent: stop
+      - action: utter_ask_continue
+      - intent: deny
+      - action: action_deactivate_loop
+      - active_loop: null
+
+
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - location: New Delhi
+  - action: restaurant_form
+  - active_loop: restaurant_form
+  - slot_was_set:
+    - location: New Delhi
+  - slot_was_set:
+    - requested_slot: cuisine
+  - slot_was_set:
+    - cuisine: Chinese
+  - slot_was_set:
+    - requested_slot: price
+  - slot_was_set:
+    - price: Rs. 300 to 700
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_submit
+  - action: utter_slots_values
+  - action: action_search_restaurants
+  - slot_was_set:
+    - location: New Delhi
+  - intent: thankyou
+  - action: utter_noworries
